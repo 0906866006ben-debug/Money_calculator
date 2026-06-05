@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="widget_background">#E6090B10</color>
+    <color name="metric_background">#FF0D1016</color>
+    <color name="button_background">#FF182130</color>
+    <color name="button_pressed">#FF24354A</color>
+    <color name="widget_stroke">#FF2B3140</color>
+    <color name="text_primary">#FFF5F7FB</color>
+    <color name="text_secondary">#FFD7DDE7</color>
+    <color name="text_muted">#FFA8B0BD</color>
+    <color name="accent_green">#FF3EE08B</color>
+    <color name="accent_cyan">#FF48D5FF</color>
+</resources>

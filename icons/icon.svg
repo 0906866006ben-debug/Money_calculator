@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title>倉位風控計算機</title>
+  <rect width="512" height="512" rx="112" fill="#090b10"/>
+  <rect x="70" y="74" width="372" height="364" rx="56" fill="#141922" stroke="#2b3140" stroke-width="10"/>
+  <path d="M130 332h252" stroke="#2b3140" stroke-width="18" stroke-linecap="round"/>
+  <path d="M130 332h154" stroke="#3ee08b" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="292" cy="332" r="38" fill="#f5f7fb" stroke="#06100b" stroke-width="10"/>
+  <path d="M150 236l58-64 54 43 90-93" fill="none" stroke="#48d5ff" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M352 122v72h-72" fill="none" stroke="#ffc857" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="256" y="420" fill="#f5f7fb" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="62" font-weight="900" text-anchor="middle">1R</text>
+</svg>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">倉位計算</string>
+    <string name="widget_name">倉位計算</string>
+    <string name="widget_description">用 +/- 調整止損距離，桌面即時計算槓桿與保證金。</string>
+</resources>

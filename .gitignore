@@ -1,0 +1,11 @@
+.gradle/
+build/
+local.properties
+*.apk
+*.aab
+*.keystore
+*.jks
+
+android-widget/.gradle/
+android-widget/build/
+android-widget/app/build/

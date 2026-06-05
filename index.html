@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#090b10">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="倉位計算">
+    <title>倉位風控計算機</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="stylesheet" href="styles.css?v=stepper3">
+  </head>
+  <body>
+    <main class="app-shell" aria-live="polite">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Risk Per Trade</p>
+          <h1>倉位風控計算機</h1>
+        </div>
+        <div class="status-pill" id="offlineStatus">本機</div>
+      </header>
+
+      <section class="inputs-grid" aria-label="交易參數">
+        <label class="field">
+          <span>總資金</span>
+          <span class="input-wrap">
+            <input id="accountTotal" inputmode="decimal" type="number" min="0" step="0.01" autocomplete="off">
+            <b>U</b>
+          </span>
+        </label>
+
+        <div class="fixed-rule">
+          <span>每單保證金</span>
+          <strong>總資金 2%</strong>
+        </div>
+      </section>
+
+      <section class="stop-panel" aria-label="止損距離">
+        <div class="stop-value">
+          <span>止損距離</span>
+          <strong id="stopLossReadout">4.8%</strong>
+        </div>
+
+        <div class="stepper-row">
+          <button class="step-button" id="decreaseStop" type="button" aria-label="減少止損距離">
+            -
+          </button>
+          <div class="step-info">
+            <span>每次 0.1%</span>
+            <b>0.5% - 15.0%</b>
+          </div>
+          <button class="step-button" id="increaseStop" type="button" aria-label="增加止損距離">
+            +
+          </button>
+        </div>
+      </section>
+
+      <section class="result-panel" aria-label="計算結果">
+        <p class="result-label">建議槓桿</p>
+        <div class="primary-result" id="primaryResult">10x</div>
+        <p class="theory-line" id="theoryLine">理論 10.37x → 設 10x</p>
+
+        <div class="simple-results">
+          <div>
+            <span>每單保證金</span>
+            <strong id="marginResult">2.00U</strong>
+          </div>
+          <div>
+            <span>保證金比例</span>
+            <strong>2%</strong>
+          </div>
+        </div>
+      </section>
+
+      <p class="footnote">保證金固定為總資金 2%，用 +/- 調整止損距離並即時反推槓桿。</p>
+    </main>
+
+    <script src="app.js?v=stepper3"></script>
+  </body>
+</html>
