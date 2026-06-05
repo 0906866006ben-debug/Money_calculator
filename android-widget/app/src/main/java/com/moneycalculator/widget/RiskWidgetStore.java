@@ -12,6 +12,7 @@ final class RiskWidgetStore {
     static final float STOP_MIN = 0.5f;
     static final float STOP_MAX = 15.0f;
     static final float STOP_STEP = 0.1f;
+    static final float STOP_FAST_STEP = 1.0f;
 
     private static final String PREFS_NAME = "risk_widget_prefs";
     private static final String DEFAULT_ACCOUNT = "default_account";

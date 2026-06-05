@@ -29,6 +29,8 @@
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="com.moneycalculator.widget.ACTION_DECREASE_STOP" />
                 <action android:name="com.moneycalculator.widget.ACTION_INCREASE_STOP" />
+                <action android:name="com.moneycalculator.widget.ACTION_DECREASE_STOP_FAST" />
+                <action android:name="com.moneycalculator.widget.ACTION_INCREASE_STOP_FAST" />
             </intent-filter>
 
             <meta-data

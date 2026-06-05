@@ -11,6 +11,8 @@ import android.widget.RemoteViews;
 public class RiskWidgetProvider extends AppWidgetProvider {
     static final String ACTION_DECREASE_STOP = "com.moneycalculator.widget.ACTION_DECREASE_STOP";
     static final String ACTION_INCREASE_STOP = "com.moneycalculator.widget.ACTION_INCREASE_STOP";
+    static final String ACTION_DECREASE_STOP_FAST = "com.moneycalculator.widget.ACTION_DECREASE_STOP_FAST";
+    static final String ACTION_INCREASE_STOP_FAST = "com.moneycalculator.widget.ACTION_INCREASE_STOP_FAST";
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -24,7 +26,8 @@ public class RiskWidgetProvider extends AppWidgetProvider {
         super.onReceive(context, intent);
 
         String action = intent.getAction();
-        if (!ACTION_DECREASE_STOP.equals(action) && !ACTION_INCREASE_STOP.equals(action)) {
+        float delta = deltaForAction(action);
+        if (delta == 0f) {
             return;
         }
 
@@ -33,7 +36,6 @@ public class RiskWidgetProvider extends AppWidgetProvider {
             return;
         }
 
-        float delta = ACTION_INCREASE_STOP.equals(action) ? RiskWidgetStore.STOP_STEP : -RiskWidgetStore.STOP_STEP;
         RiskWidgetStore.adjustStop(context, appWidgetId, delta);
         updateWidget(context, AppWidgetManager.getInstance(context), appWidgetId);
     }
@@ -65,12 +67,20 @@ public class RiskWidgetProvider extends AppWidgetProvider {
         views.setTextViewText(R.id.accountValue, RiskWidgetStore.formatAccountLine(state));
 
         views.setOnClickPendingIntent(
+                R.id.decreaseStopFast,
+                stopPendingIntent(context, appWidgetId, ACTION_DECREASE_STOP_FAST, 50_000 + appWidgetId)
+        );
+        views.setOnClickPendingIntent(
                 R.id.decreaseStop,
                 stopPendingIntent(context, appWidgetId, ACTION_DECREASE_STOP, 10_000 + appWidgetId)
         );
         views.setOnClickPendingIntent(
                 R.id.increaseStop,
                 stopPendingIntent(context, appWidgetId, ACTION_INCREASE_STOP, 20_000 + appWidgetId)
+        );
+        views.setOnClickPendingIntent(
+                R.id.increaseStopFast,
+                stopPendingIntent(context, appWidgetId, ACTION_INCREASE_STOP_FAST, 60_000 + appWidgetId)
         );
         views.setOnClickPendingIntent(
                 R.id.widgetTitle,
@@ -82,6 +92,22 @@ public class RiskWidgetProvider extends AppWidgetProvider {
         );
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
+    }
+
+    private static float deltaForAction(String action) {
+        if (ACTION_DECREASE_STOP.equals(action)) {
+            return -RiskWidgetStore.STOP_STEP;
+        }
+        if (ACTION_INCREASE_STOP.equals(action)) {
+            return RiskWidgetStore.STOP_STEP;
+        }
+        if (ACTION_DECREASE_STOP_FAST.equals(action)) {
+            return -RiskWidgetStore.STOP_FAST_STEP;
+        }
+        if (ACTION_INCREASE_STOP_FAST.equals(action)) {
+            return RiskWidgetStore.STOP_FAST_STEP;
+        }
+        return 0f;
     }
 
     private static PendingIntent stopPendingIntent(Context context, int appWidgetId, String action, int requestCode) {
